@@ -1,6 +1,7 @@
 package org.example;
 import java.sql.*;
 import java.lang.Thread;
+import java.nio.file;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +21,22 @@ public class Main {
             }
             
             ResultSet resultSet = null;
+            try (Connection connection = DriverManager.getConnection(connectionUrl);
+                Statement statement = connection.createStatement();)
+            {
+                Path filePath = Path.of("./sql-create-4ktable.sql");
+                String createTableSql = Files.readString(filePath);
+                resultSet = statement.executeQuery(createTableSql);
+                    // Print results from statement
+                    while (resultSet.next()) {
+                        System.out.println(resultSet.getString(0));
+                    }
+                    System.out.println("\n");
+            }    
+            catch (SQLException e) {
+                e.printStackTrace();
+            }     
+
             try (Connection connection = DriverManager.getConnection(connectionUrl);
                 Statement statement = connection.createStatement();)
             {
