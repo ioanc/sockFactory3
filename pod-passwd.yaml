@@ -25,9 +25,9 @@ spec:
     - name: USERNAME
       value: "sqladmin"
     - name: SERVERNAME
-      value: ""
+      value: "sql-cluster-westeu"
     - name: PASSWORD
-      value: ""
+      value: "Password@123"
     - name: PORT
       value: "1433"
     - name: USEFASTACK

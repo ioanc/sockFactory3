@@ -1,7 +1,7 @@
 package org.example;
 import java.sql.*;
 import java.lang.Thread;
-import java.nio.file;
+import java.nio.file.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -42,10 +42,10 @@ public class Main {
             {
                 // Create and execute a SELECT SQL statement.
                 //Adventure Works
-                //String selectSql = "SELECT TOP 3 Title, FirstName, LastName from SalesLT.Customer";
+                String selectSql = "SELECT TOP 3 Title, FirstName, LastName from SalesLT.Customer";
                 
                 //Table that better represents the customer environment
-                String selectSql = "SELECT * FROM TABLE4KB WHERE ID < 200";
+                //String selectSql = "SELECT * FROM TABLE4KB WHERE ID < 200";
                 
                 int i = 0;
                 while(i < 5)
