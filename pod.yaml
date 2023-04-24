@@ -3,6 +3,20 @@ kind: Pod
 metadata:
   name: pocapp
 spec:
+  # initContainers:
+  # - command:
+  #   - /bin/sh
+  #   - -c
+  #   - apt-get update && apt-get install iproute2 -y
+  #   - ip route change default via 169.254.1.1 dev eth0 proto static quickack 1
+  #   image: a9d593e2/pocapp-40ms:01
+  #   imagePullPolicy: IfNotPresent
+  #   name: init-setquickack
+  #   securityContext:
+  #     capabilities:
+  #       add:
+  #       - NET_ADMIN
+  #       - SYS_ADMIN
   containers:
   - name: pocapp
     image: twrightmsft/pocapp:v1
