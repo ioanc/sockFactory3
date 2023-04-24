@@ -27,9 +27,9 @@ spec:
       privileged: true
   - name: pocapp-40ms
     #image: twrightmsft/pocapp:v1 #Adventure Works
-    #image: twrightmsft/pocapp:v2 #4k table similar to customer env
+    image: twrightmsft/pocapp:v2 #4k table similar to customer env
     #image: a9d593e2/sockerfactory3-jovan:v1.4 #Similar to customer env
-    image: a9d593e2/pocapp-40ms:01 # image using the JDBS driver with 40ms
+    #image: a9d593e2/pocapp-40ms:01 # image using the JDBS driver with 40ms
     command:
     - sleep
     - inf
@@ -45,4 +45,4 @@ spec:
     - name: PORT
       value: "1433"
     - name: USEFASTACK
-      value: "true" #true/false
+      value: "false" #true/false
