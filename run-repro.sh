@@ -1,0 +1,1 @@
+java -cp "./target/sockFactory3-1.0-SNAPSHOT.jar:./target/*" org.example.Main
