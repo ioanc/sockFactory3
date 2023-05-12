@@ -9,31 +9,17 @@ kubectl run debug-node-pingpong --restart=Never -it -n kube-system --rm --image 
             "hostPID": true,
             "hostNetwork": true, 
             "nodeSelector": 
-                {
-                    "kubernetes.io/hostname": "aks-pingpong-22031471-vmss000000"
-                }, 
-            "tolerations": 
-                [
-                    {
-                        "operator": "Exists"
-                    }
-                ],
+                {"kubernetes.io/hostname": "aks-pingpong-22031471-vmss000000"}, 
+            "tolerations": [{"operator": "Exists"}],
             "containers": 
-                [
-                    {
-                        "name": "nsenter", 
-                        "image": "mcr.microsoft.com/oss/nginx/nginx:1.21.6",
-                        "command": 
-                            [
-                                "nsenter", "--all", "--target=1", "--", "su", "-"
-                            ], 
+                [{
+                    "name": "nsenter", 
+                    "image": "mcr.microsoft.com/oss/nginx/nginx:1.21.6",
+                    "command": 
+                        [ "nsenter", "--all", "--target=1", "--", "su", "-" ], 
                         "stdin": true, 
                         "tty": true, 
-                        "securityContext": 
-                            {
-                                "privileged": true
-                            }
-                    }
-                ]
+                        "securityContext": { "privileged": true }
+                }]
         } 
     }'
