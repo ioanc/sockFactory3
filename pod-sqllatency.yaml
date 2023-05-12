@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pocapp-40ms
+spec:
+  nodeSelector:
+    agentpool: "sqllatency"
+  # initContainers:
+  # - command:
+  #   - /bin/sh
+  #   - -c
+  #   - apt-get update && apt-get install iproute2 -y
+  #   - ip route change default via 169.254.1.1 dev eth0 proto static quickack 1
+  #   image: a9d593e2/pocapp-40ms:01
+  #   imagePullPolicy: IfNotPresent
+  #   name: init-setquickack
+  #   securityContext:
+  #     capabilities:
+  #       add:
+  #       - NET_ADMIN
+  #       - SYS_ADMIN
+  containers:
+  - name: debuger
+    image: a9d593e2/tshark-ek:010
+    env:
+    - name: JFILTER
+      value: "frame ip tcp"
+    securityContext:
+      privileged: true
+  - name: pocapp-40ms
+    #image: twrightmsft/pocapp:v1 #Adventure Works
+    image: twrightmsft/pocapp:v2 #4k table similar to customer env
+    #image: a9d593e2/sockerfactory3-jovan:v1.4 #Similar to customer env
+    #image: a9d593e2/pocapp-40ms:01 # image using the JDBS driver with 40ms
+    command:
+    - sleep
+    - inf
+    env:
+    - name: DBNAME
+      value: "test-db-dhl-westeu"
+    - name: USERNAME
+      value: "sqladmin"
+    - name: SERVERNAME
+      value: ""
+    - name: PASSWORD
+      value: ""
+    - name: PORT
+      value: "1433"
+    - name: USEFASTACK
+      value: "false" #true/false
