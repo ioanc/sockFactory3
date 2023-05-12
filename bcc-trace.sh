@@ -6,7 +6,7 @@
 # python3 -c "from struct import pack,unpack;print(unpack('>H', pack('H', 1433))[0])"
 # 39173
 
-python3 /usr/share/bcc/tools/trace -tu \
+python3 /usr/share/bcc/tools/trace -T -tu \
 -I 'net/sock.h' -I 'uapi/linux/ip.h' -I 'linux/tcp.h' -I 'net/inet_connection_sock.h' \
 'tcp_rcv_established(struct sock *sk, struct sk_buff *skb) (sk->sk_dport == 39173) "%x %d quick=%u pingpong=%u", (((struct iphdr *)(skb->head + skb->network_header))->id), (sk->sk_num), (inet_csk(sk)->icsk_ack.quick), (inet_csk(sk)->icsk_ack.pingpong)' \
 'tcp_event_data_recv(struct sock *sk, struct sk_buff *skb) (sk->sk_dport == 39173) "%x %d quick=%u pingpong=%u lrcvtime=%u ato=%u", (((struct iphdr *)(skb->head + skb->network_header))->id), (sk->sk_num), (inet_csk(sk)->icsk_ack.quick), (inet_csk(sk)->icsk_ack.pingpong), (inet_csk(sk)->icsk_ack.lrcvtime), (inet_csk(sk)->icsk_ack.ato)' \
