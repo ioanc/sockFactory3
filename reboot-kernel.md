@@ -1,4 +1,4 @@
-## Configure kernele for next reboot
+## Configure specific kernel for next reboot
 
 ```shell
 
