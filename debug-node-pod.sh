@@ -2,7 +2,6 @@
 # node name: aks-pingpong-22031471-vmss000000
 # image name: mcr.microsoft.com/oss/nginx/nginx:1.21.6
 
-
 kubectl run debug-node-pingpong --restart=Never -it -n kube-system --rm --image overriden \
 --overrides '{
         "spec": 
