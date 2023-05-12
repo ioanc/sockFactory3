@@ -1,7 +1,5 @@
 ## Configure kernele for next reboot
 
-### get the string to be used with grub-reboot
-
 ```shell
 
 root@test-kernel:~# awk -F\' '$1=="menuentry " || $1=="submenu " {print i++ " : " $2}; /\smenuentry / {print "\t" i-1">"j++ " : " $2};' /boot/grub/grub.cfg
