@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pocapp-40ms
+  name: pocapp-noinit-sqllatency-kernel
 spec:
   nodeSelector:
     agentpool: "sqllatency"
